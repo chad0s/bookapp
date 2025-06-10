@@ -67,13 +67,38 @@ Authorization: Bearer <token>
 - `deleteAuthor(id)`: Delete author (requires admin role)
 - `addReview(input)`: Add review to book (requires auth)
 
-## Testing
-
-Run tests with: `npm test`
-
 ## Deployment
 
 1. Set up PostgreSQL and MongoDB instances
 2. Configure environment variables
 3. Build and deploy to platform of choice (Heroku, AWS, etc.)
 4. Run database migrations in production
+
+## 🗄️ Database Schema
+
+### PostgreSQL (Primary Data)
+
+#### Authors Table
+
+- `id` (Primary Key)
+- `name` (String, Required)
+- `biography` (Text)
+- `born_date` (Date)
+- `created_at` (Timestamp)
+- `updated_at` (Timestamp)
+
+#### Books Table
+
+- `id` (Primary Key)
+- `title` (String, Required)
+- `description` (Text)
+- `published_date` (Date)
+- `author_id` (Foreign Key → Authors.id)
+- `created_at` (Timestamp)
+- `updated_at` (Timestamp)
+
+### MongoDB (Metadata)
+
+- User reviews and ratings
+- Additional book metadata
+- User preferences and bookmarks
